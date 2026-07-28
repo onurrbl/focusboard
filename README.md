@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FocusBoard
 
-## Getting Started
+A 2-week bridge portfolio project: a personal task manager built with modern frontend tooling to prepare for **OpsBoard** and junior fullstack roles.
 
-First, run the development server:
+## Tech stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **TanStack Query** — server state & mutations
+- **Prisma** + **PostgreSQL** (Neon recommended)
+- **Zod** + **React Hook Form** — validated forms
+- **shadcn/ui** + **Tailwind CSS v4**
+- **Vitest** + **React Testing Library**
+- **GitHub Actions** CI
+
+## Features (MVP scaffold)
+
+- Task list with search, status/project filters, and sorting
+- Create / edit / delete tasks (dialog form)
+- Projects support (API ready; seed included)
+- Dashboard with open, overdue, and weekly completed stats
+- Loading skeletons, error retry states, toast notifications
+
+## Getting started
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Database
+
+Create a free Postgres database on [Neon](https://neon.tech), then copy `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Set `DATABASE_URL` in `.env`.
+
+### 3. Migrate & seed
+
+```bash
+npm run db:migrate
+npm run db:seed
+```
+
+### 4. Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run test` | Run Vitest tests |
+| `npm run db:migrate` | Apply Prisma migrations |
+| `npm run db:seed` | Seed sample projects & tasks |
+| `npm run db:generate` | Regenerate Prisma client |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── (dashboard)/     # Tasks + dashboard pages
+│   └── api/             # REST route handlers
+├── components/
+│   ├── dashboard/
+│   ├── layout/
+│   ├── tasks/
+│   └── ui/              # shadcn components
+├── hooks/               # TanStack Query hooks
+├── lib/                 # api client, validators, prisma
+└── providers/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roadmap (2-week plan)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [x] Project scaffold & stack setup
+- [x] Prisma schema (Project, Task)
+- [x] API routes + Query hooks
+- [x] Task list, filters, form dialog
+- [x] Dashboard stats
+- [x] Vitest + CI
+- [ ] Debounced search
+- [ ] Project management UI
+- [ ] Optimistic updates
+- [ ] Deploy to Vercel + Neon
 
-## Deploy on Vercel
+## Related projects
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **[filmlog](https://github.com/onurrbl/mern-stack-letterboxd-clone-app)** — MERN Letterboxd clone (previous portfolio app)
+- **OpsBoard** — team dashboard with roles (planned after frontend training program)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Author
+
+Built by [onurrbl](https://github.com/onurrbl).
